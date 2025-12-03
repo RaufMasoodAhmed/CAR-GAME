@@ -1,0 +1,82 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int x = 2, y = 18, ex = 1, ey = 0, score = 0, gameover = 0;
+
+	while (gameover == 0)
+	{
+		for (int c = 0; c < 100; c++)
+		{
+			cout << "\n";
+		}
+		cout << "CAR GAME " << endl;
+		cout << "=== ==== " << endl;
+		cout << "BY ANAS, RAUF, WALI, ZEESHAN" << endl;
+		for (int i = 0; i < 21; i++)
+		{
+			for (int j = 1; j <= 3; j++)
+			{
+				if (i == y && j == x)
+				{
+					cout << "  <^^>  ";
+				}
+				else if (i == ey && j == ex)
+				{
+					cout << "  [**]  ";
+				}
+				else
+					cout << "|      |";
+			}
+			cout << "\n";
+		}
+
+		cout << "\nScore: " << score << "\n";
+		char move;
+		cout << "Move (w/a/s/d): ";
+		cin >> move;
+
+		int oldLane = x;
+		int oldRow = y;
+
+		if (move == 'a') x--;
+		if (move == 'd') x++;
+		if (move == 'w') y--;
+		if (move == 's') y++;
+
+		if (x < 1) x = 1;
+		if (x > 3) x = 3;
+		if (y < 0) y = 0;
+		if (y > 20) y = 20;
+
+		if (x == ex && ey == y)
+		{
+			gameover = 1;
+		}
+		ey++;
+
+		if (ey > 20)
+		{
+			score++;
+			ey = 0;
+
+			if (ex == 1)
+			{
+				ex = 2;
+			}
+			else if (ex == 2)
+			{
+				ex = 3;
+			}
+			else
+			{
+				ex = 1;
+			}
+		}
+	}
+
+	cout << "\nGAME OVER\n";
+	cout << "FINAL SCORE = " << score << "\n";
+
+
+}
